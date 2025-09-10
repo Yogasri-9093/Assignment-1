@@ -29,7 +29,7 @@ This assignment introduces **multi-container workflows**, **service networking**
 ---
 
 ## Project Structure
-.
+``` bash
 ├── app/
 │ ├── Dockerfile
 │ └── main.py
@@ -39,13 +39,14 @@ This assignment introduces **multi-container workflows**, **service networking**
 ├── out/ # JSON results appear here
 ├── compose.yml
 └── Makefile
+```
 
---
+
 
 ## How to Run
 
 ### 1. Build and Start Services
-```bash
+
 make up
 2. Stop Services
 make down
@@ -53,6 +54,7 @@ make down
 make clean
 Example Output
 After running make up, you should see output in the terminal and in out/summary.json:
+```bash
 {
   "total_trips": 6,
   "avg_fare_by_city": [
@@ -87,25 +89,42 @@ After running make up, you should see output in the terminal and in out/summary.
     }
   ]
 }
-Troubleshooting
+```
+
+# Troubleshooting
+
 Database not ready
+
 Run:
 make clean && make up
 Port already in use (5432)
-Edit compose.yml and change:
+
+**Edit compose.yml and change:**
+
 ports:
   - "5433:5432"
 Permission errors on out/ folder
+
 Delete and recreate the out/ folder with proper permissions:
 rm -rf out && mkdir out
-Reflection
+
+# Reflection
+
 In this assignment, I learned how to:
+
 Set up and manage a multi-container system with Docker Compose.
+
 Use environment variables, health checks, and service networking between containers.
+
 Ensure reproducibility with a Makefile and a clear README.
+
 The most useful part was understanding how containers communicate and how to automate workflows.
-For future improvements, I would:
+
+# For future improvements, I would:
+
 Add more complex SQL queries for deeper analysis.
+
 Optimize images by using smaller base images to reduce build size.
-Author
+
+# Author
 Yogasri Lella
